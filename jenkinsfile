@@ -34,7 +34,7 @@ pipeline{
         stage('Creating angular image'){
             steps{
             echo 'building';
-            sh 'docker build -t 50216663/AngularSamir:$BUILD_NUMBER .';
+            sh 'docker build -t 50216663/angularsamir:$BUILD_NUMBER .';
             }
         }
     
@@ -44,7 +44,7 @@ pipeline{
               echo "push"
               withCredentials([string(credentialsId: 'DockerId', variable: 'Docker')]) {
                         sh 'docker login -u 50216663 -p ${Docker}'
-                        sh 'docker image push 50216663/AngularSamir:$BUILD_NUMBER'
+                        sh 'docker image push 50216663/angularsamir:$BUILD_NUMBER'
                 }
         }  
     }
